@@ -1,0 +1,664 @@
+<!doctype html>
+<html ⚡ lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <title>Editor de Release</title>
+    <link rel="canonical" href="./regular-html-version.html">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style amp-custom>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif;font-size:14px;font-weight:400;text-align:center;color:gray}
+	.hvr-fade{display:inline-block;vertical-align:middle;-webkit-transform:perspective(1px) translateZ(0);transform:perspective(1px) translateZ(0);box-shadow:0 0 1px rgba(0,0,0,0);overflow:hidden;-webkit-transition-duration:.7s;transition-duration:.7s;-webkit-transition-property:color,background-color,box-shadow;transition-property:color,background-color,box-shadow}
+	.hvr-fade:hover,.hvr-fade:focus,.hvr-fade:active{background-color:#222225;color:#fff;box-shadow:0 0 6px rgba(0,0,0,0.4)}
+		.hvr-glow{display:inline-block;vertical-align:middle;-webkit-transform:perspective(1px) translateZ(0);transform:perspective(1px) translateZ(0);box-shadow:0 0 1px rgba(0,0,0,0);-webkit-transition-duration:.3s;transition-duration:.3s;-webkit-transition-property:box-shadow;transition-property:box-shadow}
+		.hvr-glow:hover,.hvr-glow:focus,.hvr-glow:active{box-shadow:0 0 8px rgba(0,0,0,0.6)}
+	.impress-header{display:flex;height:7vh;background-color:#fff;flex-direction:row;justify-content:flex-start;align-items:center;padding:10px}
+	.impress-logo{height:80%}
+	.header-container{display:flex;height:95px;flex-direction:row;flex-wrap:nowrap;justify-content:space-between;align-items:stretch;margin:10px}
+	.bloco-header{display:flex;flex-direction:row;flex-wrap:nowrap;margin:10px;width:10vw;background-color:#f1f1f1;border-radius:8px;align-items:center;justify-content:center}
+	.hvr-fade .bloco-header{background-color:transparent}
+	.bloco-header h1{padding-left:10px;font-size:14px}
+	.header-container a{text-decoration:none;display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;margin:10px;width:10vw;background-color:#f1f1f1;border-radius:8px;cursor:pointer}
+	.tutorial-icon{position:relative;top:4px;height:40px}
+	.steps-container{display:flex;margin:10px;width:75vw;background-color:#666;border-radius:30px 30px 9px 9px;justify-content:center}
+	.steps{display:flex;flex-direction:row;flex-wrap:nowrap;justify-content:space-around;width:70vw}
+	.steps-wrapper{display:flex;align-items:center;position:relative}
+	.step-itens{display:grid;padding:5px;width:100px}
+	.step-number{justify-self:center;position:relative;border:1px solid gray;margin-bottom:5px;border-radius:50%;width:30px;height:30px;font-size:22px}
+	.step-before h1{position:relative;color:#fff;border-color:lightgray}
+	.step-before .step-number:after{content:'';position:absolute;width:8vw;height:4px;background:linear-gradient(to right,rgba(192,192,192,1) 0%,rgba(192,192,192,1) 40%,rgba(192,192,192,0) 100%);left:29px;top:12px}
+	.step-select{border-radius:5px;box-shadow:0 0 12px rgba(0,0,0,0.6)}
+	.step-select h1{position:relative;font-weight:700;color:#fff}
+	.step-select .step-number{border:4px solid silver;font-size:19px}
+	.step-select .step-number:before{content:'';position:absolute;width:8vw;height:4px;background:linear-gradient(to right,rgba(192,192,192,0) 0%,rgba(192,192,192,1) 40%,rgba(192,192,192,1) 100%);right:25px;top:9px}
+	.step-select .step-number:after{content:'';position:absolute;width:8vw;height:4px;background:linear-gradient(to right,rgba(192,192,192,1) 0%,rgba(192,192,192,1) 40%,rgba(192,192,192,0) 100%);left:26px;top:9px}
+	.step-before-pass h1{position:relative;color:#fff;border-color:lightgray}
+	.step-before-pass .step-number:before{content:'';position:absolute;width:8vw;height:4px;background:linear-gradient(to right,rgba(192,192,192,0) 0%,rgba(192,192,192,1) 40%,rgba(192,192,192,1) 100%);right:28px;top:12px}
+	.step-before-pass .step-number:after{content:'';position:absolute;width:8vw;height:4px;background:linear-gradient(to right,rgba(192,192,192,1) 0%,rgba(192,192,192,1) 40%,rgba(192,192,192,0) 100%);left:28px;top:12px}
+	.step-after h1{position:relative}
+	.step-after .step-number:before{content:'';position:absolute;width:8vw;height:4px;background:linear-gradient(to right,rgba(128,128,128,1) 0%,rgba(128,128,128,1) 40%,rgba(128,128,128,0) 100%);transform:rotate(180deg);right:29px;top:12px}
+	.step-after .step-number:after{content:'';position:absolute;width:8vw;height:4px;background:linear-gradient(to right,rgba(128,128,128,1) 0%,rgba(128,128,128,1) 40%,rgba(128,128,128,0) 100%);left:28px;top:12px}
+	.step-end h1{position:relative}
+	.step-end .step-number:before{content:'';position:absolute;width:8vw;height:4px;background:linear-gradient(to right,rgba(128,128,128,1) 0%,rgba(128,128,128,1) 40%,rgba(128,128,128,0) 100%);transform:rotate(180deg);right:29px;top:12px}
+	.tag-name{padding:5px 40px 5px 20px;-webkit-clip-path:polygon(0 0,100% 0%,91% 100%,0% 100%);clip-path:polygon(0 0,100% 0%,91% 100%,0% 100%);position:absolute;background-color:#ca2332}
+	.tag-name h1{font-weight:500;font-size:18px;text-align:left;color:#fff}
+	.btns-wrapper{display:flex;flex-direction:row;justify-content:flex-end}
+	.btns-wrapper a{margin:6px 2vw;display:flex;text-decoration:none;flex-direction:row;align-items:center;padding:10px 15px;border-radius:7px;box-shadow:0 0 16px rgba(0,0,0,0.2);font-size:12px}
+	.btn span{font-size:12px}
+	.btn-icon-svg{padding-right:5px;height:20px;width:auto}
+	.btn-corretor .btn-icon-svg{position:relative;right:3px;margin-right:3px}
+	.seletor-fontes{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center}
+	.seletor-fontes span{font-size:12px;margin:0 5px 0 0}
+	.seletor-fontes select{margin:0 50px 0 0;padding:7px;border-radius:7px;outline:none}
+	.font1{font-family:Arial,sans-serif}
+	.font2{font-family:Arial Narrow,sans-serif}
+	.font3{font-family:Times,Times New Roman,serif}
+	.font4{font-family:Helvetica,sans-serif}
+	.font5{font-family:Georgia,serif}
+	.font6{font-family:Verdana,sans-serif}
+	.font7{font-family:Trebuchet MS,sans-serif}
+	.font8{font-family:Bookman,URW Bookman L,serif}
+	.font9{font-family:New Century Schoolbook,TeX Gyre Schola,serif}
+	.font10{font-family:American Typewriter,serif}
+	.font11{font-family:Courier New,monospace}
+	.font12{font-family:Comic Sans MS,Comic Sans,cursive}
+	.font13{font-family:Gill Sans,sans-serif}
+	.font14{font-family:Avantgarde,TeX Gyre Adventor,URW Gothic L,sans-serif}
+	.tabs-wrapper{padding:20px}
+	.tabs-container{position:relative;height:635px;display:flex;flex-direction:row;flex-wrap:nowrap}
+	.tabs-grid{position:relative;width:100%;background:linear-gradient(to bottom,#d9d9d9 0%,#4d4d4d 100%)}
+	article.tabs{position:relative;display:block;width:95%;height:15em;margin:2em auto;bottom:40px}
+	article.tabs section{position:absolute;display:block;top:1.8em;left:0;height:12em;padding:10px 20px;background-color:#ddd;border-radius:5px;box-shadow:0 3px 3px rgba(0,0,0,0.1);z-index:0}
+	article.tabs section:first-child{z-index:1}
+	article.tabs section h2{position:absolute;font-size:1em;font-weight:400;width:140px;height:2.5em;top:-2.5em;left:10px;padding:0;margin:0;color:#999;background-color:#ddd;border-radius:5px 5px 0 0}
+	article.tabs section:nth-child(2) h2{left:155px}
+	article.tabs section:nth-child(3) h2{left:300px}
+	article.tabs section h2 a{display:block;width:100%;line-height:1.8em;text-align:center;text-decoration:none;color:inherit;outline:0 none}
+	article.tabs section:target,article.tabs section:target h2{color:#333;background-color:#fff;z-index:2}
+	article.tabs section,article.tabs section h2{-webkit-transition:all 500ms ease;-moz-transition:all 500ms ease;-ms-transition:all 500ms ease;-o-transition:all 500ms ease;transition:all 500ms ease}
+	section h2{border:1px solid lightgray;padding:5px}
+	#tab1,#tab2,#tab3{display:flex;flex-direction:row;justify-content:center;align-items:center;width:100%;height:600px;box-shadow:0 0 12px rgba(0,0,0,0.1)}
+	#tab1 svg,#tab2 svg,#tab3 svg{position:relative;right:5px;top:5px;height:18px}
+	.tab-editor{width:100%;height:580px;overflow-y:scroll}
+	.release-editor{margin:20px;position:relative;height:800px;background-color:#fff}
+	.menu-container{position:relative;width:680px;background:linear-gradient(to bottom,#d9d9d9 0%,#4d4d4d 100%)}
+	.table-selected{margin:20px;background-color:#fff;border-radius:10px;padding:30px}
+	.table-selected h1{position:relative;display:flex;flex-direction:column;justify-content:center;margin:10px;font-size:18px}
+	.table-selected svg{width:120%;height: 120%}
+	.editarTextTableTabElementHeader{padding: 10px;}
+	.editarTextTableTabElementHeader h4{padding: 10px;border-radius: 10px;outline: none}
+	.textElementsWrapper{padding: 10px;}
+	.tabelaSvgBtn {border: none;background-color: transparent;cursor: pointer;display: flex;flex-direction: column;justify-content: center;align-items: center;margin: 0 auto 20px auto;width: 120px;padding: 8px 15px; border-radius: 15px}
+	.table-editor-icons{margin-top:10px;display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:center}
+	.table-editor-icons img{padding:6px;height:40px;margin:auto}
+	.table-editor-icons a{margin:10px 20px;display:flex;align-items:center;justify-content:center}
+	.table-editor-icons a:hover{border-radius:10px;background-color:lightgray}
+	.table-size-grid{display:flex;flex-direction:row;flex-wrap:nowrap;justify-content:space-around}
+	.table-size-grid input{padding:4px;width:50px;border-radius:5px;border:.5px solid lightgray}
+	.editor-linhas-grid {margin-top:10px; padding-top:10px;border-top:1px solid lightgray;}
+	.editor-linhas-grid h3{padding: 10px;}
+	.editor-linhas{display:flex;flex-direction:row;flex-wrap:nowrap;justify-content: space-between;align-items: center;}
+	.editor-linhas input{padding:4px;width:50px;border-radius:5px;border:.5px solid lightgray;margin: 3px;}
+	.editor-linhas button{outline:none;border:none;background-color:transparent;cursor:pointer;width: 35px;height: 40px;}
+	.editor-linhas button svg{width: 100%;padding: 7px;}
+	.editor-linhas button svg:hover{fill:lightgray;}
+	.table-lines-weight{display:flex;flex-direction:row;flex-wrap:nowrap;justify-content: center;align-items: center;}
+	.table-color-btn{display:flex;flex-direction:row;flex-wrap:nowrap;justify-content: center;align-items: center;}
+
+
+
+		.text-selected{position:relative;margin:20px;background-color:#fff}
+		.text-selected h1{margin:30px 10px;font-size:18px}
+		.text-editor-icons{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-around}
+		.icons-line{display:flex;flex-direction:row;flex-wrap:nowrap;justify-content:stretch}
+		.centro{display:flex;flex-direction:row;flex-wrap:nowrap;justify-content: center;align-items: center;width: 100%;}
+/*CAMPOS INPUTS RANGE EDITORES DE TEXTO ###############################################################################*/
+		.text-editor-icons svg{padding:6px;height:40px;margin:auto}
+		.text-editor-icons a{margin:10px;display:flex;align-items:center;justify-content:center}
+		.text-editor-icons a:hover{border-radius:10px;background-color:lightgray}
+		.text.input-container{position:relative;width:60%;display:flex;flex-direction:row;flex-wrap:nowrap;justify-content:space-around;align-items:center}
+		.text-size{display:flex;flex-direction:row;flex-wrap:nowrap;margin:5px;width:80%;align-items:center;justify-content:center}
+		.text-size *{padding:2px;font-size: 21px}
+		.text-size input{border-radius:5px;border:1px solid lightgray}
+		.line-height{display:flex;flex-direction:row;flex-wrap:nowrap;margin:5px;width:80%;align-items:center;justify-content:center}
+		.line-height *{padding:2px;font-size: 21px}
+		.line-height input{border-radius:5px;border:1px solid lightgray}
+/*CAMPOS INPUTS RANGE EDITORES DE TEXTO ###############################################################################*/
+.gridWrapper{display: grid;grid-template-columns: 1fr 1fr;grid-column-gap: 20px;grid-row-gap: 20px;grid-template-rows: 50px 50px;margin-top: 20px;}
+.inserirImgBtn {
+	background-color: #fff;
+	border: none;
+	box-shadow: 0 0 20px 0 rgba(0,0,0,0.2);
+	border-radius: 10px;
+	padding: 5px 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	position: relative;
+}
+
+.inserirImgBtn svg {
+	width: 30px;height: 30px;margin-right: 6px;
+}
+
+.estiloBordaIcon {
+	width: 25px;
+	height: 25px;
+	position: relative;
+	display: block;
+	border-style: dotted;
+	border-color: #777;
+	margin-right: 6px;
+}
+
+.estiloBordaIcon1 {
+	width: 25px;
+	height: 25px;
+	position: relative;
+	display: block;
+	border-style: dashed;
+	border-color: #777;
+	margin-right: 6px;
+}
+
+.estiloBordaIcon2 {
+	width: 25px;
+	height: 25px;
+	position: relative;
+	display: block;
+	border-style: solid;
+	border-color: #777;
+	margin-right: 6px;
+}
+
+.estiloBordaIcon3 {
+	width: 25px;
+	height: 25px;
+	position: relative;
+	display: block;
+	border-style: double;
+	border-color: #777;
+	margin-right: 6px;
+}
+
+.estiloBordaIcon4 {
+	width: 25px;
+	height: 25px;
+	position: relative;
+	display: block;
+	border-style: groove;
+	border-color: #777;
+	margin-right: 6px;
+}
+
+.estiloBordaIcon5 {
+	width: 25px;
+	height: 25px;
+	position: relative;
+	display: block;
+	border-style: ridge;
+	border-color: #777;
+	margin-right: 6px;
+}
+
+.estiloBordaIcon6 {
+	width: 25px;
+	height: 25px;
+	position: relative;
+	display: block;
+	border-style: inset;
+	border-color: #777;
+	margin-right: 6px;
+}
+
+.estiloBordaIcon7 {
+	width: 25px;
+	height: 25px;
+	position: relative;
+	display: block;
+	border-style: outset;
+	border-color: #777;
+	margin-right: 6px;
+}
+
+.editarPerfilModalCloseBtn {
+	position: absolute;
+	right: 20px;
+	top: 15px;
+	z-index: 20;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.EditarSvg {
+	position: relative;
+	top: -2px;
+	height: 30px;
+	margin-right: 5px;
+}
+
+.editarPerfilModalCloseBtn svg {
+	height: 25px;
+}
+
+
+.estiloBordaWrapper {
+	width: 200px;
+	display: flex;
+	position: absolute;
+	background-color: #fff;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	padding: 10px 20px;
+	box-sizing: border-box;
+	border-radius: 10px;
+	box-shadow: 0 0 120px 0 rgba(0,0,0,0.2);
+	z-index: 100;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.estiloBordaTitle {
+	margin: 20px auto;
+}
+
+.estiloBordaBtn{margin: 10px 0;}
+
+    </style>
+
+
+
+<!--     <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Article headline",
+      "image": [
+        "thumbnail1.jpg"
+      ],
+      "datePublished": "2015-02-05T08:00:00+08:00"
+    }
+    </script> -->
+    <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    <script async custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js"></script>
+
+	<!-- <link rel="stylesheet" href="css/tela-editor-style-tabela.css"> -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400i,700,700i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+</head>
+<body>
+	<div class="impress-header">
+		<svg version="1.1" class="impress-logo" id="logo-impress-Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1963.4 487.1" xml:space="preserve">
+			<path fill="#CA2332" d="M792.3,479.8h-30.7V146.3h120.1c25.1,0,46.6,9,64.6,26.9c17.5,17,27.1,40.4,26.7,64.8c0,25.1-8.9,46.6-26.7,64.6c-17,17.4-40.3,27-64.6,26.7h-89.4L792.3,479.8L792.3,479.8z M792.3,298.7h89.4c16.7,0,31-6,43-17.9c11.6-11.2,18-26.6,17.7-42.7c0-16.9-5.9-31.3-17.7-43.2c-11.2-11.7-26.8-18.1-43-17.9h-89.4V298.7z M1237.8,479.8h-34.4l-78.2-150.7h-79.9v150.5h-30.7V146.3h119.8c25.2,0,46.8,9,64.6,26.9c17.4,16.9,27.1,40.3,26.7,64.6c0,20.9-6.4,39.6-19.3,56.2c-12.1,15.8-29.1,27.1-48.3,32.1L1237.8,479.8L1237.8,479.8z M1134.4,298.5c16.7,0,31-5.9,43-17.7c11.8-11.9,17.7-26.2,17.7-43s-5.9-31-17.7-43c-11.2-11.7-26.8-18.1-43-17.9h-89.2v121.5h89.2V298.5z M1442.3,146.3V177h-139.6v120.3H1413V328h-110.3v121.2h139.6v30.7h-170.2V146.3H1442.3z M1567.1,482.9c-21.5-0.9-41.3-6.6-59.2-17c-19-10.2-33.8-26.9-41.6-47.1l28.8-10.5c5,13.3,15,24.1,30.2,32.3c13.3,7.1,28.1,11.2,43.2,11.8c23.7,0.9,43.5-5,59.5-17.9c13.1-9.4,21.4-24.3,22.5-40.4c1.2-29.1-25.4-51.3-79.9-66.7c-39.3-11-67.4-26.3-84.3-46c-12.5-13.8-19-32-18.1-50.6c1.4-31.7,14.9-55.4,40.4-71.1c22.3-12.9,48-18.6,73.6-16.5c34.7,1.5,62.4,13.5,83.1,35.8l-22.5,20.9c-15-16.3-35.7-25-62-26.2c-19.5-1.6-39.1,2.6-56.2,12.1c-16.2,9.9-26,27.5-25.8,46.5c-1.2,28.5,25.4,50.4,79.9,65.7c39.3,11,67.4,26.4,84.3,46.2c12.5,14,19,32.4,18.1,51.1c-1.3,25.1-13.7,48.3-33.9,63.2c-21.1,16.6-47.3,25.3-74.1,24.6L1567.1,482.9z M1807.1,482.9c-21.5-0.9-41.3-6.6-59.2-17c-19-10.2-33.8-26.9-41.6-47.1l28.8-10.5c5,13.3,15,24.1,30.2,32.3c13.3,7.1,28.1,11.2,43.2,11.8c23.7,0.9,43.5-5,59.5-17.9c13.1-9.4,21.4-24.3,22.5-40.4c1.2-29.1-25.4-51.3-79.9-66.7c-39.3-11-67.4-26.3-84.3-46c-12.5-13.8-19-32-18.1-50.6c1.4-31.7,14.9-55.4,40.4-71.1c22.3-12.9,48-18.6,73.6-16.5c34.7,1.5,62.4,13.5,83.1,35.8l-22.5,20.9c-15-16.3-35.7-25-62-26.2c-19.5-1.6-39.1,2.6-56.2,12.1c-16.2,9.9-26,27.5-25.8,46.5c-1.2,28.5,25.4,50.4,79.9,65.7c39.3,11,67.4,26.4,84.3,46.2c12.5,14,19,32.4,18.1,51.1c-1.3,25.1-13.7,48.3-33.9,63.2c-21.1,16.6-47.3,25.3-74.1,24.6L1807.1,482.9z"/>
+			<path fill="#CA2332" d="M42.9,4.9h123.5v473.5H42.9V4.9z M679,4.9h-4.4l-78,79.5l-111,113.1l-0.4-0.4L375.5,85.3L296.6,4.9h-44.5v473.5h123.4V261.6l23.6,24l21.7,22.1l64.4,65.6v0.9l0.4-0.5l65.3-66.4l21.2-21.7l24.5-24.9v217.7h123.5V4.9H679z M177.6,4.9v50.3h31.7l-11.2,22.5l-3.4,7.2l32.5-22.6l10.2-7.1V4.9H177.6z"/>
+		</svg>
+	</div>
+	<div class="full-wrapper">
+		<div class="header-container">
+			<div class="bloco-header">
+			</div>
+			<div class="steps-container">
+				<div class="steps">
+					<div class="steps-wrapper">
+						<div class="step-itens step-start step-before">
+							<h1 class="step-number">1</h1>
+							<h1 class="step-title">TELA INICIAL</h1>
+						</div>
+					</div>
+					<div class="steps-wrapper">
+						<div class="step-itens step-before-pass">
+							<h1 class="step-number">2</h1>
+							<h1 class="step-title">TEMPLATE</h1>
+						</div>
+					</div>
+					<div class="steps-wrapper">
+						<div class="step-itens step-select">
+							<h1 class="step-number">3</h1>
+							<h1 class="step-title">EDITOR</h1>
+						</div>
+					</div>
+					<div class="steps-wrapper">
+						<div class="step-itens step-end">
+							<h1 class="step-number">4</h1>
+							<h1 class="step-title">TELA FINAL</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+				<a href="https://www.udemy.com/im-press/" target="_blank" class="hvr-fade">
+					<div class="bloco-header">
+						<svg class="tutorial-icon" version="1.1" id="certificate-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 585 547" xml:space="preserve">
+							<polyline fill="none" stroke="#666666" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="22.9256" points="94.5,421.7 12,421.7 12,12.4 574,12.4 574,421.7 266.4,421.7 "/>
+							<path fill="none" stroke="#666666" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="22.9256" d="M287.9,331.3c23.8,0.8,40.7,30.5,64.5,30.5c22.8,0,38.3-29.9,61.1-30.5c33.9-1,72.2,47.6,98.4,26c22.9-18.9-27.8-55.1-27.1-84.8c0.5-22.1,30.3-36.7,30.5-58.8c0.2-19.3-28.6-30.5-29.4-49.8c-1.2-29.3,46.8-66.6,23.7-84.8c-26.6-21-64.5,27.2-98.4,26c-22.2-0.8-36.5-31.9-58.8-31.7c-23.8,0.2-39.6,32.6-63.3,32.8c-21.6,0.2-35-30.6-56.5-31.7c-22.1-1.1-39,25.2-61.1,26c-30.9,1.2-67.7-41.2-90.5-20.4c-21,19.3,24,54.1,22.6,82.5c-1,20.6-25.1,34.2-29.4,54.3c-1.9,9.1,8.5,16.5,12.4,24.9"/>
+							<circle fill="none" stroke="#666666" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="22.9256" cx="178.2" cy="321.1" r="65.6"/>
+							<path fill="none" stroke="#666666" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="22.9256" d="M137.5,536l40.7-50.9l40.7,50.9V372.5c-11.2,8.9-25.3,14.2-40.7,14.2s-29.5-5.3-40.7-14.2V536z"/>
+							<line fill="none" stroke="#666666" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="22.9256" x1="208.8" y1="163.9" x2="382.9" y2="163.9"/>
+							<line fill="none" stroke="#666666" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="22.9256" x1="249.5" y1="218.2" x2="341.1" y2="218.2"/>
+						</svg>
+						<h1>TUTORIAL</h1>
+					</div>
+				</a>
+		</div>
+
+		<div class="tag-name">
+			<h1>Cliente - ABC Comunicação</h1>
+		</div>
+		
+		<div class="btns-wrapper">
+			<div class="seletor-fontes">
+				<svg class="btn-icon-svg" version="1.1" id="editor-font" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 416 448" xml:space="preserve">
+					<path fill="#CCCCCC" d="M216.6,0h-17.2c-5,0-9.5,3.1-11.2,7.8L35.5,416H12c-6.6,0-12,5.4-12,12v8c0,6.6,5.4,12,12,12h88c6.6,0,12-5.4,12-12v-8c0-6.6-5.4-12-12-12H71.9l44.7-120.5h182.3L344.1,416H316c-6.6,0-12,5.4-12,12v8c0,6.6,5.4,12,12,12h88c6.6,0,12-5.4,12-12v-8c0-6.6-5.4-12-12-12h-23.5L227.8,7.8C226.1,3.1,221.6,0,216.6,0z M128.6,263.3l75.7-201.2c1.5-3.9,2.7-7.8,3.7-11.4c0.9,3.6,2.2,7.5,3.7,11.4l75.1,201.3H128.6V263.3z"/>
+				</svg>
+				<span>FONTE PADRÃO:</span>
+				<select>
+				    <option class="font1"> Arial </option>
+				    <option class="font2"> Arial Narrow </option>
+				    <option class="font3"> Times New Roman </option>
+				    <option class="font4"> Helvetica </option>
+				    <option class="font5"> Georgia </option>
+				    <option class="font6"> Verdana </option>
+				    <option class="font7"> Trebuchet MS </option>
+				    <option class="font8"> Bookman </option>
+				    <option class="font10"> American Typewriter </option>
+				    <option class="font11"> Courier New </option>
+				    <option class="font13"> Gill Sans </option>
+				</select>
+			</div>
+
+			<a href="" class="btn-copia-teste btn hvr-fade">
+				<svg  class="btn-icon-svg" version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 21.1 18.8" xml:space="preserve">
+					<path fill="#CCCCCC" d="M20.8,6.2l-5.9-5.9c-0.7-0.7-2-0.2-2,0.8v2.7C7.7,4,3.2,5.3,3.2,10.5c0,3.1,1.8,4.9,2.9,5.7C7,16.8,8.3,16,8,14.9c-1.1-3.8,0.3-4.5,4.9-4.6v2.6c0,1.1,1.3,1.6,2,0.8l5.9-5.9C21.2,7.4,21.2,6.7,20.8,6.2L20.8,6.2z M14.1,12.9V9.1c-5.2,0-8.8,0.6-7.2,6.2c-1.2-0.8-2.4-2.4-2.4-4.8C4.4,5.6,9.2,5,14.1,5V1.2L19.9,7L14.1,12.9z M15.4,14.8c0.1-0.1,0.2-0.1,0.2-0.2c0.3-0.3,0.7-0.1,0.7,0.3V17c0,1-0.8,1.8-1.8,1.8H1.8C0.8,18.8,0,18,0,17V4.1c0-1,0.8-1.8,1.8-1.8h6.3c0.2,0,0.4,0.2,0.4,0.4c0,0.2-0.1,0.4-0.3,0.4c-0.3,0.1-0.7,0.2-1,0.3c0,0-0.1,0-0.1,0H1.8c-0.3,0-0.6,0.3-0.6,0.6V17c0,0.3,0.3,0.6,0.6,0.6h12.9c0.3,0,0.6-0.3,0.6-0.6v-1.8C15.3,15,15.3,14.9,15.4,14.8L15.4,14.8z"/>
+				</svg>
+				<span>ENVIAR CÓPIA TESTE</span>
+			</a>
+
+			<a href="" class="btn-salvar btn hvr-fade">
+				<svg class="btn-icon-svg" version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 18.7 18.7" xml:space="preserve">
+					<path fill="#CCCCCC" d="M18.1,4.1l-3.5-3.5C14.3,0.2,13.7,0,13.2,0H2C0.9,0,0,0.9,0,2v14.7c0,1.1,0.9,2,2,2h14.7c1.1,0,2-0.9,2-2V5.5C18.7,5,18.5,4.5,18.1,4.1L18.1,4.1z M12,1.3v4H4v-4H12z M17.4,16.7c0,0.4-0.3,0.7-0.7,0.7H2c-0.4,0-0.7-0.3-0.7-0.7V2c0-0.4,0.3-0.7,0.7-0.7h0.7v4.3c0,0.6,0.4,1,1,1h8.7c0.6,0,1-0.4,1-1V1.4c0.1,0,0.2,0.1,0.3,0.2L17.2,5c0.1,0.1,0.2,0.3,0.2,0.5V16.7z M9.4,8.4c-2,0-3.7,1.6-3.7,3.7s1.6,3.7,3.7,3.7S13,14.1,13,12S11.4,8.4,9.4,8.4z M9.4,14.4c-1.3,0-2.3-1-2.3-2.3s1-2.3,2.3-2.3s2.3,1,2.3,2.3S10.7,14.4,9.4,14.4z"/>
+				</svg>
+				<span>SALVAR</span>
+			</a>
+
+			<a href="" class="btn-fechar btn hvr-fade">
+				<svg class="btn-icon-svg" version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 18.1 18.1" xml:space="preserve">
+					<path fill="#CCCCCC" d="M16.2,0H1.9C0.9,0,0,0.9,0,1.9v14.2c0,1.1,0.9,1.9,1.9,1.9h14.2c1.1,0,1.9-0.9,1.9-1.9V1.9C18.1,0.9,17.2,0,16.2,0z M16.8,16.2c0,0.4-0.3,0.6-0.6,0.6H1.9c-0.4,0-0.6-0.3-0.6-0.6V1.9c0-0.4,0.3-0.6,0.6-0.6h14.2c0.4,0,0.6,0.3,0.6,0.6V16.2z M12.9,6.2L10.1,9l2.8,2.8c0.2,0.2,0.2,0.5,0,0.7l-0.3,0.3c-0.2,0.2-0.5,0.2-0.7,0L9,10.1l-2.8,2.8c-0.2,0.2-0.5,0.2-0.7,0l-0.3-0.3C5,12.3,5,12,5.2,11.8L8,9L5.2,6.2C5,6.1,5,5.8,5.2,5.6l0.3-0.3C5.8,5,6.1,5,6.2,5.2L9,8l2.8-2.8C12,5,12.3,5,12.5,5.2l0.3,0.3C13.1,5.8,13.1,6.1,12.9,6.2L12.9,6.2z"/>
+				</svg>
+				<span>SALVAR E SEGUIR</span>
+			</a>
+		</div>
+
+		<div class="tabs-wrapper">
+			<div class="tabs-container">
+<div class="tabs-grid">
+					<article class="tabs">
+						<section id="tab1">
+							<h2><a href="#tab1">
+								<svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve">
+									<path fill="#4D4D4D" d="M493.3,56.2l-37.5-37.5c-25-25-65.5-25-90.5,0L12.8,371.2L0.2,485.3c-1.7,15.3,11.2,28.2,26.5,26.5l114.2-12.7l352.4-352.4C518.2,121.8,518.2,81.2,493.3,56.2L493.3,56.2z M398.1,196.7L174,420.7V386h-48v-48H91.3l224.1-224.1L398.1,196.7L398.1,196.7z M126.1,468.6l-59,6.6l-30.3-30.3l6.6-59L63.3,366H98v48h48v34.7L126.1,468.6z M470.6,124.1l-49.9,49.9l-82.7-82.7l49.9-49.9c12.5-12.5,32.7-12.5,45.3,0l37.5,37.5C483.1,91.4,483.1,111.6,470.6,124.1L470.6,124.1z"/>
+								</svg>
+
+								<span>EDITOR</span></a></h2>
+
+							<div class="tab-editor">
+								<!-- container do editor -->
+							</div>
+						</section>
+						<section id="tab2">
+							<h2><a href="#tab2">
+							<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve">
+								<path fill="#4D4D4D" d="M508.5,481.6l-129-129c-2.3-2.3-5.3-3.5-8.5-3.5h-10.3C395,312,416,262.5,416,208C416,93.1,322.9,0,208,0S0,93.1,0,208s93.1,208,208,208c54.5,0,104-21,141.1-55.2V371c0,3.2,1.3,6.2,3.5,8.5l129,129c4.7,4.7,12.3,4.7,17,0l9.9-9.9C513.2,493.9,513.2,486.3,508.5,481.6z M208,384c-97.3,0-176-78.7-176-176S110.7,32,208,32s176,78.7,176,176S305.3,384,208,384z"/>
+							</svg>
+								<span>NO GMAIL</span></a></h2>
+							<div class="tab-editor">
+								
+							</div>
+						</section>
+						
+						<section id="tab3">
+							<h2><a href="#tab3">
+							<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve">
+								<path fill="#4D4D4D" d="M508.5,481.6l-129-129c-2.3-2.3-5.3-3.5-8.5-3.5h-10.3C395,312,416,262.5,416,208C416,93.1,322.9,0,208,0S0,93.1,0,208s93.1,208,208,208c54.5,0,104-21,141.1-55.2V371c0,3.2,1.3,6.2,3.5,8.5l129,129c4.7,4.7,12.3,4.7,17,0l9.9-9.9C513.2,493.9,513.2,486.3,508.5,481.6z M208,384c-97.3,0-176-78.7-176-176S110.7,32,208,32s176,78.7,176,176S305.3,384,208,384z"/>
+							</svg>
+								<span>NOS DEMAIS</span></a></h2>
+							<div class="tab-editor">
+
+							</div>
+						</section>
+					</article>
+				</div>
+
+				<div class="menu-container">
+					<div class="table-selected">
+
+						<div class="textElementsTableAccoWrapper">
+							<amp-accordion class="sample"
+  animate>
+  <section class="editarTextTableTabElementHeader">
+    <h4>Editar Texto</h4>
+<div class="textElementsWrapper">
+
+
+
+
+					<div class="text-selected">
+						<div class="text-editor-icons">
+							<span class="icons-line">
+								<a href="">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+										<path d="M292 243.533c38.106-18.627 58.232-55.253 58.232-97.312 0-48.226-26.016-85.031-61.552-100.895C266.471 35.173 242.357 32 209.995 32H28c-6.627 0-12 5.373-12 12v24c0 6.627 5.373 12 12 12h34.142v352H28c-6.627 0-12 5.373-12 12v24c0 6.627 5.373 12 12 12h190.244c24.748 0 45.688-1.269 67.264-8.249C331.83 455.887 368 411.467 368 352.453c0-58.251-33.975-99.102-76-108.92zM125.598 84.034h84.396c19.037 0 33.631 2.538 46.323 8.884 19.32 10.948 29.491 33.661 29.183 60.18-.434 37.473-31.53 67.367-69.005 67.367h-90.897V84.034zM260.759 421.62c-12.056 5.077-27.286 6.346-39.977 6.346h-95.184V272.499h100.261c46.957 0 77.416 30.458 77.416 76.781 0 33.632-16.499 61.552-42.516 72.34z"/>
+									</svg>
+								</a>
+								<a href="">
+									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 235.7 448" xml:space="preserve">
+										<path d="M92.6,32h45.2L63,416H13.6c-5.7,0-10.6,4-11.8,9.6l-1.6,8C-1.3,441.1,4.4,448,12,448h128.8c5.7,0,10.6-4,11.8-9.6l1.6-8c1.5-7.4-4.2-14.4-11.8-14.4H97.2l74.9-384h50c5.7,0,10.6-4,11.8-9.6l1.6-8C237,6.9,231.3,0,223.7,0H94.3c-5.7,0-10.6,4-11.8,9.6l-1.6,8C79.4,25.1,85.1,32,92.6,32z"/>
+									</svg>
+								</a>
+								<a href="">
+									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 512" xml:space="preserve">
+										<path d="M0,500v-8c0-6.6,5.4-12,12-12h424c6.6,0,12,5.4,12,12v8c0,6.6-5.4,12-12,12H12C5.4,512,0,506.6,0,500z M291.1,12v8c0,6.6,5.4,12,12,12h42.7v226.5c0,85.5-46.5,128.7-122.1,128.7c-74.3,0-121.6-40.3-121.6-127.6V32h42.7c6.6,0,12-5.4,12-12v-8c0-6.6-5.4-12-12-12H26.7c-6.6,0-12,5.4-12,12v8c0,6.6,5.4,12,12,12h42.7v228.8c0,106.8,63.6,158.1,154.9,158.1c89.3,0,154.3-52.8,154.3-158.1V32h42.7c6.6,0,12-5.4,12-12v-8c0-6.6-5.4-12-12-12H303.1C296.5,0,291.1,5.4,291.1,12z"/>
+									</svg>
+								</a>
+								<a href="">
+									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 26.4 41.1" xml:space="preserve">
+										<path d="M7.6,21.3L4.3,31H0.2L10.7,0h4.8l10.6,31h-4.3l-3.3-9.8H7.6z M17.7,18.1l-3-8.9c-0.7-2-1.2-3.9-1.6-5.7H13c-0.5,1.8-1,3.7-1.6,5.6l-3,9H17.7z"/>
+										<rect y="33.2" fill="#3FA9F5" width="26.4" height="7.9"/>
+									</svg>
+								</a>
+								<a href="">
+									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 35.8 43" xml:space="preserve">
+										<rect fill="#3FA9F5" width="35.8" height="43"/>
+										<path d="M12.5,27.1l-3.1,9.4h-4L15.6,6.6h4.7l10.2,29.9h-4.1l-3.2-9.4H12.5z M22.3,24l-2.9-8.6c-0.7-1.9-1.1-3.7-1.5-5.4h-0.1c-0.4,1.8-0.9,3.6-1.5,5.4L13.3,24H22.3z"/>
+									</svg>
+								</a>
+							</span>
+							<span class="icons-line">
+								<a href="">
+									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 420" xml:space="preserve">
+										<path d="M288,6v24c0,3.3-2.7,6-6,6H6c-3.3,0-6-2.7-6-6V6c0-3.3,2.7-6,6-6h276C285.3,0,288,2.7,288,6z M6,164h436c3.3,0,6-2.7,6-6v-24c0-3.3-2.7-6-6-6H6c-3.3,0-6,2.7-6,6v24C0,161.3,2.7,164,6,164z M6,420h436c3.3,0,6-2.7,6-6v-24c0-3.3-2.7-6-6-6H6c-3.3,0-6,2.7-6,6v24C0,417.3,2.7,420,6,420z M282,256H6c-3.3,0-6,2.7-6,6v24c0,3.3,2.7,6,6,6h276c3.3,0,6-2.7,6-6v-24C288,258.7,285.3,256,282,256z"/>
+									</svg>
+								</a>
+								<a href="">
+									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 420" xml:space="preserve">
+										<path d="M352,6v24c0,3.3-2.7,6-6,6H102c-3.3,0-6-2.7-6-6V6c0-3.3,2.7-6,6-6h244C349.3,0,352,2.7,352,6z M6,164h436c3.3,0,6-2.7,6-6v-24c0-3.3-2.7-6-6-6H6c-3.3,0-6,2.7-6,6v24C0,161.3,2.7,164,6,164z M6,420h436c3.3,0,6-2.7,6-6v-24c0-3.3-2.7-6-6-6H6c-3.3,0-6,2.7-6,6v24C0,417.3,2.7,420,6,420z M346,256H102c-3.3,0-6,2.7-6,6v24c0,3.3,2.7,6,6,6h244c3.3,0,6-2.7,6-6v-24C352,258.7,349.3,256,346,256z"/>
+									</svg>
+								</a>
+								<a href="">
+									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 420" xml:space="preserve">
+										<path d="M160,30V6c0-3.3,2.7-6,6-6h276c3.3,0,6,2.7,6,6v24c0,3.3-2.7,6-6,6H166C162.7,36,160,33.3,160,30z M6,164h436c3.3,0,6-2.7,6-6v-24c0-3.3-2.7-6-6-6H6c-3.3,0-6,2.7-6,6v24C0,161.3,2.7,164,6,164z M6,420h436c3.3,0,6-2.7,6-6v-24c0-3.3-2.7-6-6-6H6c-3.3,0-6,2.7-6,6v24C0,417.3,2.7,420,6,420z M166,292h276c3.3,0,6-2.7,6-6v-24c0-3.3-2.7-6-6-6H166c-3.3,0-6,2.7-6,6v24C160,289.3,162.7,292,166,292z"/>
+									</svg>
+								</a>
+								<a href="">
+									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 420" xml:space="preserve">
+										<path d="M0,30V6c0-3.3,2.7-6,6-6h436c3.3,0,6,2.7,6,6v24c0,3.3-2.7,6-6,6H6C2.7,36,0,33.3,0,30z M6,164h436c3.3,0,6-2.7,6-6v-24c0-3.3-2.7-6-6-6H6c-3.3,0-6,2.7-6,6v24C0,161.3,2.7,164,6,164z M6,420h436c3.3,0,6-2.7,6-6v-24c0-3.3-2.7-6-6-6H6c-3.3,0-6,2.7-6,6v24C0,417.3,2.7,420,6,420z M6,292h436c3.3,0,6-2.7,6-6v-24c0-3.3-2.7-6-6-6H6c-3.3,0-6,2.7-6,6v24C0,289.3,2.7,292,6,292z"/>
+									</svg>
+								</a>
+								<a href="">
+									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 392" xml:space="preserve">
+										<path d="M494,54H122c-3.3,0-6-2.7-6-6V24c0-3.3,2.7-6,6-6h372c3.3,0,6,2.7,6,6v24C500,51.3,497.3,54,494,54z M500,208v-24c0-3.3-2.7-6-6-6l0,0H122c-3.3,0-6,2.7-6,6l0,0v24c0,3.3,2.7,6,6,6h372C497.3,214,500,211.3,500,208z M500,368v-24c0-3.3-2.7-6-6-6H122c-3.3,0-6,2.7-6,6v24c0,3.3,2.7,6,6,6h372C497.3,374,500,371.3,500,368z M36,0C16.1,0,0,16.1,0,36s16.1,36,36,36s36-16.1,36-36S55.9,0,36,0z M36,160c-19.9,0-36,16.1-36,36s16.1,36,36,36s36-16.1,36-36S55.9,160,36,160z M36,320c-19.9,0-36,16.1-36,36s16.1,36,36,36s36-16.1,36-36S55.9,320,36,320z"/>
+									</svg>
+								</a>
+							</span>
+							<span class="centro">
+								<a href="">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+										<path d="M13.723 18.654l-3.61 3.609c-2.316 2.315-6.063 2.315-8.378 0-1.12-1.118-1.735-2.606-1.735-4.188 0-1.582.615-3.07 1.734-4.189l4.866-4.865c2.355-2.355 6.114-2.262 8.377 0 .453.453.81.973 1.089 1.527l-1.593 1.592c-.18-.613-.5-1.189-.964-1.652-1.448-1.448-3.93-1.51-5.439-.001l-.001.002-4.867 4.865c-1.5 1.499-1.5 3.941 0 5.44 1.517 1.517 3.958 1.488 5.442 0l2.425-2.424c.993.284 1.791.335 2.654.284zm.161-16.918l-3.574 3.576c.847-.05 1.655 0 2.653.283l2.393-2.389c1.498-1.502 3.94-1.5 5.44-.001 1.517 1.518 1.486 3.959 0 5.442l-4.831 4.831-.003.002c-1.438 1.437-3.886 1.552-5.439-.002-.473-.474-.785-1.042-.956-1.643l-.084.068-1.517 1.515c.28.556.635 1.075 1.088 1.528 2.245 2.245 6.004 2.374 8.378 0l4.832-4.831c2.314-2.316 2.316-6.062-.001-8.377-2.317-2.321-6.067-2.313-8.379-.002z"/>
+									</svg>
+
+								</a>
+								<a href="">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+										<path d="M7.092 5.099l1.439-.205-.439-3.083-1.44.204.44 3.084zm-2.211 3.445l.205-1.44-3.084-.44-.205 1.441 3.084.439zm-.494-5.163l-1.03 1.03 2.203 2.204 1.029-1.03-2.202-2.204zm12.541 15.565l-1.439.205.438 3.083 1.441-.204-.44-3.084zm2.21-3.446l-.206 1.441 3.085.439.205-1.44-3.084-.44zm.495 5.163l1.028-1.029-2.204-2.204-1.027 1.03 2.203 2.203zm2.64-18.904c2.344 2.346 2.344 6.149.001 8.494l-3.896 3.896-1.417-1.417 3.895-3.895c1.562-1.562 1.562-4.101 0-5.662-1.562-1.562-4.101-1.562-5.662 0l-3.894 3.895-1.416-1.416 3.895-3.895c2.344-2.345 6.147-2.345 8.494 0zm-8.138 16.631l-3.852 3.851c-2.344 2.347-6.146 2.345-8.494.001-2.344-2.346-2.345-6.149 0-8.494l3.854-3.851 1.414 1.415-3.851 3.851c-1.562 1.562-1.562 4.102-.001 5.663 1.563 1.561 4.102 1.561 5.664-.001l3.85-3.851 1.416 1.416z"/>
+									</svg>
+								</a>
+							</span>
+<!-- CAMPOS INPUTS RANGE EDITORES DE TEXTO ###############################################################################-->
+							<div class="text-inputs-container">
+								<div class="text-size">
+									<label for="user_lic">
+										<svg id="font-size" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 411.3 371.9" xml:space="preserve">
+											<path d="M246.9,218.5l-28.5,65.4h-36.6L275,76h42.7l93.6,207.9h-37.8l-29.3-65.4H246.9z M336.8,197.5L310,137.7c-6.1-13.6-10.2-25.9-14.2-37.9h-0.8c-4.1,12.3-8.5,25-13.8,37.6l-26.9,60.1H336.8z"/>
+											<path d="M50.1,234.5l-21.9,50.4H0l71.8-160.2h32.9l72.1,160.2h-29.1L125,234.5H50.1z M119.4,218.4l-20.7-46.1c-4.7-10.5-7.8-20-11-29.2h-0.6c-3.1,9.5-6.6,19.2-10.7,29l-20.7,46.3H119.4z"/>
+										</svg>
+									</label>
+									<input id="user_lic" type="number" min="9" max="60" step="1" value ="14"/>
+									<p>px</p>
+								</div>
+								<div class="line-height">
+									<label for="user_lic">
+										<svg id="line-height" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 365.5 374.3" xml:space="preserve">
+											<path d="M100.3,306.3c-2.6-2.6-6.8-2.6-9.4,0L62.5,335V118.5l28.4,28.7c2.6,2.6,6.8,2.6,9.4,0l3.9-3.9c2.6-2.6,2.6-6.8,0-9.4L57.8,87.2c-2.6-2.6-6.8-2.6-9.4,0L1.9,133.9c-2.6,2.6-2.6,6.8,0,9.4l3.9,3.9c2.6,2.6,6.8,2.6,9.4,0l28.4-28.7V335l-28.4-28.7c-2.6-2.6-6.8-2.6-9.4,0l-3.9,3.9c-2.6,2.6-2.6,6.8,0,9.4l46.4,46.7c2.6,2.6,6.8,2.6,9.4,0l46.4-46.7c2.6-2.6,2.6-6.8,0-9.4L100.3,306.3z"/>
+											<path d="M202.4,109.8l-22.3,50.4h-28.7L224.4,0h33.5l73.3,160.2h-29.7l-23-50.4H202.4z M272.8,93.6l-21-46.1c-4.8-10.5-8-20-11.2-29.2H240c-3.2,9.5-6.7,19.2-10.8,29l-21,46.3H272.8z"/>
+											<rect x="112.5" y="166.3" width="253" height="9"/>
+											<path d="M202.4,308.8l-22.3,50.4h-28.7l73-160.2h33.5l73.3,160.2h-29.7l-23-50.4H202.4z M272.8,292.6l-21-46.1c-4.8-10.5-8-20-11.2-29.2H240c-3.2,9.5-6.7,19.2-10.8,29l-21,46.3H272.8z"/>
+											<rect x="112.5" y="365.3" width="253" height="9"/>
+										</svg>
+									</label>
+									<input id="user_lic" type="number" min="1" max="400" step="1" value ="100"/>
+									<p>%</p>
+								</div>
+							</div>
+<!-- CAMPOS INPUTS RANGE EDITORES DE TEXTO ###############################################################################-->
+						</div>
+
+					</div>
+
+
+
+
+</div>
+  </section>
+</amp-accordion>
+						</div>
+						<button class="tabelaSvgBtn hvr-glow">
+							<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve">
+								<path fill="lightgray" d="M464,32H48C21.5,32,0,53.5,0,80v352c0,26.5,21.5,48,48,48h416c26.5,0,48-21.5,48-48V80C512,53.5,490.5,32,464,32z M160,448H48c-8.8,0-16-7.2-16-16v-80h128V448z M160,320H32v-96h128V320z M160,192H32V96h128V192zM320,448H192v-96h128V448z M320,320H192v-96h128V320z M320,192H192V96h128V192z M480,352v80c0,8.8-7.2,16-16,16H352v-96H480zM480,320H352v-96h128V320z M480,192H352V96h128V192z"/>
+							</svg>
+						</button>
+						<p>Acrescente linhas e colunas na tabela:</p><br>
+							<div class="table-size-grid">
+								<div class="table-size-width">
+									<label for="user_lic1">linhas: </label>
+									<input id="user_lic1" type="number" min="1" max="60" step="1" value ="4"/>
+								</div>
+								<div class="table-size-height">
+									<label for="user_lic2">Colunas: </label>
+									<input id="user_lic2" type="number" min="1" max="60" step="1" value ="4"/>
+								</div>
+								<div class="table-size-height">
+									<label for="user_lic2">Largura: </label>
+									<input id="user_lic2" type="number" min="1" max="1200" step="1" value ="800"/>
+								</div>
+							</div>
+							<div class="editor-linhas-grid">
+								<h3>Ajustar linhas:</h3>
+								<div class="editor-linhas">
+									<div class="table-color-btn">
+										<span>Cor das linhas:</span>
+										<button class="cor_linhas">
+											<svg fill="gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+												<path d="M15.07 12.528l-1.68-1.4c.497-2.361.502-3.016 2.035-4.448 1.938-1.811 7.512-6.525 7.512-6.525.129-.108.271-.155.409-.155.342 0 .654.294.654.647 0 .104-.027.214-.088.322 0 0-3.418 6.509-4.846 8.748-1.127 1.771-1.769 1.896-3.996 2.811zm-1.043 1.301l-1.839-1.535c-4.084.043-2.717 4.559-6.696 4.559l-.49-.021c1.048 1.459 2.706 2.168 4.318 2.168 2.551 0 4.988-1.778 4.707-5.171zm3.973-.39v8.561h-16v-12h9.582c.154-.754.296-1.396.517-2h-12.099v16h20v-12.176c-.641.772-1.272 1.24-2 1.615z"/>
+											</svg>
+										</button>
+									</div>
+									<div class="table-lines-weight">
+										<label for="linhas_lic">Espessura das linhas: </label>
+										<input id="linhas_lic" type="number" min="1" max="40" step="1" value ="1"/>
+										<span>px</span>
+									</div>
+								</div>
+							</div>
+							<div class="gridWrapper">
+								<button class="inserirImgBtn">
+									<svg fill="#eee2df" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 384" xml:space="preserve">
+										<path d="M464,0H48C21.5,0,0,21.5,0,48v288c0,26.5,21.5,48,48,48h416c26.5,0,48-21.5,48-48V48C512,21.5,490.5,0,464,0z M480,336c0,8.8-7.2,16-16,16H48c-8.8,0-16-7.2-16-16V48c0-8.8,7.2-16,16-16h416c8.8,0,16,7.2,16,16V336z M112,168c30.9,0,56-25.1,56-56s-25.1-56-56-56s-56,25.1-56,56S81.1,168,112,168z M112,88c13.2,0,24,10.8,24,24s-10.8,24-24,24s-24-10.8-24-24S98.8,88,112,88z M319,111l-95,95l-31-31c-9.4-9.4-24.6-9.4-33.9,0l-88,88c-4.5,4.5-7,10.6-7,17v28c0,6.6,5.4,12,12,12h360c6.6,0,12-5.4,12-12v-92 c0-6.4-2.5-12.5-7-17l-88-88C343.6,101.7,328.4,101.7,319,111z M416,288H96v-4.7l80-80l48,48l112-112l80,80V288z"/>
+									</svg>
+									<span>Inserir Imagem</span>
+								</button>
+								<button class="inserirImgBtn">
+									<span>Alinhamento</span>
+								</button>
+								<button class="inserirImgBtn">
+									<div class="estiloBordaIcon"></div>
+									<span>Estilo da borda</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="estiloBordaWrapper">
+		<button class="editarPerfilModalCloseBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="#777">
+          <path d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"></path>
+        </svg>
+      </button>
+      <span class="estiloBordaTitle">Estilo da borda</span>
+		<button class="inserirImgBtn estiloBordaBtn">
+			<div class="estiloBordaIcon"></div>
+			<span>Pontilhado</span>
+		</button>
+		<button class="inserirImgBtn estiloBordaBtn">
+			<div class="estiloBordaIcon1"></div>
+			<span>Tracejado</span>
+		</button>
+		<button class="inserirImgBtn estiloBordaBtn">
+			<div class="estiloBordaIcon2"></div>
+			<span>Contínuo</span>
+		</button>
+		<button class="inserirImgBtn estiloBordaBtn">
+			<div class="estiloBordaIcon3"></div>
+			<span>Duplo</span>
+		</button>
+		<button class="inserirImgBtn estiloBordaBtn">
+			<div class="estiloBordaIcon4"></div>
+			<span>Entalhado</span>
+		</button>
+		<button class="inserirImgBtn estiloBordaBtn">
+			<div class="estiloBordaIcon5"></div>
+			<span>Ressaltado</span>
+		</button>
+		<button class="inserirImgBtn estiloBordaBtn">
+			<div class="estiloBordaIcon6"></div>
+			<span>Baixo relevo</span>
+		</button>
+		<button class="inserirImgBtn estiloBordaBtn">
+			<div class="estiloBordaIcon7"></div>
+			<span>Alto relevo</span>
+		</button>
+	</div>
+
+
+
+</body>
+</html>
