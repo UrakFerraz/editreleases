@@ -1,0 +1,304 @@
+<!doctype html>
+<html ⚡ lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <title>Sample document</title>
+    <link rel="canonical" href="./regular-html-version.html">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style amp-custom>
+      *{font-family:sans-serif;margin:0;padding:0;line-height:170%;font-size:10px;text-align:justify}
+      a{cursor:pointer;text-decoration:none;color:gray}
+      .picstrip p{color:silver}
+      h1,h2,h3,h4,h5,h6{color:#222225;text-align:center;}
+      h1{font-size:18px}
+      h2{font-size:17px}
+      h3{font-size:15px;font-weight:600}
+      h4{font-size:14px}
+      h5{font-size:13px}
+      h6{font-size:12px;font-weight:200}
+      p{font-size:14px}
+      .titulo{margin:10px;color:#1C334D}
+      .linha-fina{margin:10px}
+      .paragrafo{margin:10px;color:gray}
+      .textos-esquerda{grid-column:1 / 2}
+      .textos-direita{grid-column:2 / 3}
+      .textos-centralizados{grid-column:1 / 2;grid-row:2 / 3}
+      .titulo-simples-container{margin:10px;text-align:center}
+      .titulo-simples-container h1{text-align:center}
+      .titulo-linhaFina-container{margin:10px}
+      .titulo-linhaFina-container h1,h4{text-align:center}
+      .texto-simples-container{margin:10px}
+      .texto-simples-container p{text-align:justify}
+      .titulo-linhaFina-texto{margin:10px}
+      .titulo-linhaFina-texto h1,h4{text-align:center}
+      .titulo-e-texto{margin:10px}
+      .titulo-e-texto h1{text-align:center}
+      .bloco-imagem-direita{position:relative;display:grid;justify-content:stretch;padding:10px;margin:0 auto}
+      .imagem-direita-container{display:grid;grid-template-columns:auto auto}
+      .imagem-direita-container amp-img{align-self:center;width:150px;height:auto;grid-column:2 / 3}
+      .bloco-imagem-direita-com-legenda{position:relative;display:grid;justify-content:stretch;padding:10px;margin:0 auto}
+      .imagem-direita-container-com-legenda{display:grid;grid-template-columns:auto auto}
+      .box-imagem-com-legenda-container{grid-column:2 / 3;align-self:center;width:300px}
+      .box-imagem-direita-com-legenda{display:grid;grid-template-columns:auto;grid-template-rows:auto auto}
+      .box-imagem-com-legenda amp-img{align-self:center;width:300px;height:auto;grid-column:1 / 2}
+      .texto-legenda{background:gray}
+      .texto-legenda h6{padding:10px;color:#fff}
+      .bloco-imagem-esquerda{position:relative;display:grid;justify-content:stretch;padding:10px;margin:0 auto}
+      .imagem-esquerda-container{display:grid;grid-template-columns:auto auto}
+      .imagem-esquerda-container amp-img{align-self:center;width:150px;height:auto;grid-column:1 / 2}
+      .bloco-imagem-esquerda-com-legenda{position:relative;display:grid;justify-content:stretch;padding:10px;margin:0 auto}
+      .imagem-esquerda-container-com-legenda{display:grid;grid-template-columns:auto auto}
+      .box-imagem-esquerda-com-legenda-container{grid-column:1 / 2;align-self:center;width:300px}
+      .box-imagem-com-legenda{display:grid;grid-template-columns:auto;grid-template-rows:auto auto}
+      .box-imagem-com-legenda amp-img{align-self:center;width:300px;height:auto;grid-column:1 / 2}
+      .texto-legenda{background:gray}
+      .texto-legenda h6{padding:10px;color:#fff}
+      .bloco-imagem-centralizada{position:relative;display:grid;justify-content:stretch;padding:10px;margin:0 auto}
+      .imagem-centralizada-container{display:grid;grid-template-columns:1fr}
+      .imagem-centralizada-container amp-img{align-self:center;place-self:center;width:75vw;height:auto;height:auto;grid-column:1 / 2}
+      .bloco-imagem-centralizada-com-legenda{position:relative;display:grid;justify-content:stretch;padding:10px;margin:0 auto}
+      .imagem-centralizada-container-com-legenda{display:grid;grid-template-columns:1fr}
+      .box-imagem-centralizada-com-legenda-container{grid-column:1 / 2;grid-row:1 / 2;align-self:center;place-self:center;width:75vw}
+      .box-imagem-com-legenda-centralizada amp-img{width:75vw}
+      .textos-centralizados h1,h4{text-align:center}
+      .bloco-imagem-total-width{display:flex;justify-content:center}
+      .box-imagem-total-width{position:relative;display:grid;justify-content:stretch;margin:10px;width:100vw}
+      .box-imagem-total-width amp-img{align-self:center}
+      .bloco-logo-central{display:flex;justify-content:center}
+      .box-logo-central{position:relative;display:grid;justify-content:stretch;margin:10px;width:200px;width:200px}
+      .box-logo-central amp-img{align-self:center}
+      .bloco-logo-esquerda{display:flex;justify-content:start}
+      .box-logo-esquerda{position:relative;display:grid;justify-content:stretch;margin:10px;width:200px;width:200px}
+      .box-logo-esquerda amp-img{align-self:flex-start}
+      .bloco-logo-direita{display:flex;justify-content:flex-end}
+      .box-logo-direita{position:relative;display:grid;justify-content:stretch;margin:10px;width:200px;width:200px}
+      .box-logo-direita amp-img{align-self:end}
+      .bloco-duas-logos{display:flex;flex-direction:row;justify-content:space-between}
+      .box-duas-logos{position:relative;display:grid;justify-content:stretch;margin:10px;width:200px;width:200px}
+      .box-duas-logos amp-img{align-self:end}
+      .galeria-basica-container{display:grid;grid-template-columns:repeat(3,1fr);grid-gap:10px;margin:10px}
+      .galeria-basica-container-com-texto{display:grid;grid-template-columns:repeat(3,1fr);grid-gap:10px;margin:10px}
+      .galeria-basica-blocos-com-texto{margin:10px}
+      .galeria-basica-container-com-texto-down{display:grid;grid-template-columns:repeat(3,1fr);grid-gap:10px;margin:10px}
+      .galeria-basica-blocos-com-texto-down{margin:10px}
+      .picstrip{grid-column:1 / 2;grid-row:1 / 2}
+      .picstrip amp-img{margin-right:15px;width:100%;height:auto}
+      .texto-picstrip{margin:0 15px;text-align:center;font-size:13px;font-weight:700;border-bottom:1px solid silver}
+      .galeria-basica-container-com-texto-direita{display:grid;grid-template-columns:repeat(2,1fr);grid-gap:10px;margin:10px}
+      .galeria-basica-blocos-com-texto-direita{margin:10px;display:grid;grid-template-columns:auto auto;grid-template-rows:1fr;align-items:center}
+      .galeria-basica-blocos-com-texto-direita amp-img{margin-right:15px;width:22vw;height:auto;grid-column:1 / 2;grid-row:1 / 2}
+      .galeria-basica-blocos-com-texto-direita p{padding-top:0;grid-column:2 / 3;grid-row:1 / 2}
+      .galeria-basica-container-com-texto-direita-down{display:grid;grid-template-columns:repeat(2,1fr);grid-gap:10px;margin:10px}
+      .galeria-basica-blocos-com-texto-direita-down{margin:10px;display:grid;grid-template-columns:auto auto;grid-template-rows:1fr;align-items:center}
+      .galeria-basica-blocos-com-texto-direita-down p{margin-left:15px}
+      .picstrip-esquerda{width:22vw;grid-column:1 / 2;grid-row:1 / 2}
+      .picstrip-esquerda amp-img{width:100%;height:auto}
+      .texto-picstrip-esquerda{margin-right:15px;text-align:center;font-size:13px;font-weight:700;border-bottom:1px solid silver}
+      .lista-basica-container-com-texto-direita{display:grid;grid-template-columns:1fr;grid-gap:10px;margin:10px}
+      .lista-basica-blocos-com-texto-direita{margin:10px;display:grid;grid-template-columns:auto auto;grid-template-rows:1fr;align-items:center}
+      .lista-basica-blocos-com-texto-direita amp-img{margin-right:15px;width:35vw;height:auto;grid-column:1 / 2;grid-row:1 / 2}
+      .lista-textos-direita{grid-column:2 / 3;grid-row:1 / 2}
+      .lista-textos-direita h4{text-align:justify}
+      .lista-textos-direita p{text-align:justify}
+      .galeria-basica-container-com-texto-esquerda{display:grid;grid-template-columns:repeat(2,1fr);grid-gap:10px;margin:10px}
+      .galeria-basica-blocos-com-texto-esquerda{margin:10px;display:grid;grid-template-columns:auto auto;grid-template-rows:1fr;align-items:center}
+      .galeria-basica-blocos-com-texto-esquerda amp-img{margin-left:15px;width:22vw;height:auto;grid-column:2 / 3;grid-row:1 / 2}
+      .galeria-basica-blocos-com-texto-esquerda p{grid-column:1 / 2;grid-row:1 / 2}
+      .galeria-basica-container-com-texto-esquerda-down{display:grid;grid-template-columns:repeat(2,1fr);grid-gap:10px;margin:10px}
+      .galeria-basica-blocos-com-texto-esquerda-down{margin:10px;display:grid;grid-template-columns:auto auto;grid-template-rows:1fr;align-items:center}
+      .galeria-basica-blocos-com-texto-esquerda-down p{margin-right:15px}
+      .picstrip-direito{width:22vw;grid-column:2 / 3;grid-row:1 / 2}
+      .picstrip-direita amp-img{width:100%;height:auto}
+      .texto-picstrip-direita{margin-left:15px;text-align:center;font-size:13px;font-weight:700;border-bottom:1px solid silver}
+      .lista-basica-container-com-texto-esquerda{display:grid;grid-template-columns:1fr;grid-gap:10px;margin:10px}
+      .lista-basica-blocos-com-texto-esquerda{margin:10px;display:grid;grid-template-columns:auto auto;grid-template-rows:1fr;align-items:center}
+      .lista-basica-blocos-com-texto-esquerda amp-img{margin-left:15px;width:35vw;height:auto;grid-column:2 / 3;grid-row:1 / 2}
+      .lista-textos-esquerda{grid-column:1 / 2;grid-row:1 / 2}
+      .lista-textos-esquerda h4{text-align:justify}
+      .lista-textos-esquerda p{text-align:justify}
+      .galeria-basica-container-com-legenda{display:grid;grid-template-columns:repeat(3,1fr);grid-gap:10px;margin:10px}
+      .galeria-basica-blocos-com-legenda{margin:10px;display:grid;grid-template-columns:1fr;grid-template-rows:auto auto}
+      .dividir{padding:10px;margin:10px}
+      hr.style1{border-top:1px solid #8c8b8b}
+      hr.style2{border-top:3px double #8c8b8b}
+      hr.style3{border-top:1px dashed #8c8b8b}
+      hr.style4{border-top:1px dotted #8c8b8b}
+      hr.style5{background-color:#fff;border-top:2px dashed #8c8b8b}
+      hr.style6{background-color:#fff;border-top:2px dotted #8c8b8b}
+      hr.style7{border-top:1px solid #8c8b8b;border-bottom:1px solid #fff}
+      hr.style9{border-top:1px dashed #8c8b8b;border-bottom:1px dashed #fff}
+      hr.style10{border-top:1px dotted #8c8b8b;border-bottom:1px dotted #fff}
+      .ampTabContainer{display:flex;flex-wrap:wrap}
+      .tabButton[selected]{background:#ccc}
+      .tabButton{list-style:none;flex-grow:1;text-align:center;cursor:pointer}
+      .tabContent{display:none;width:100%;order:1;border:1px solid #ccc}
+      .tabButton[selected]+.tabContent{display:block}
+      .itemCustom{border:1px solid #000;height:280px;width:380px;margin:10px;text-align:center;padding-top:140px}
+      amp-selector{border-radius:5px 5px 0 0;padding:1rem;margin:1rem;background-color:#fff}
+      amp-selector div{font-size:14px}
+      .tabContent h1,.tabContent p{margin:20px}
+      .tipo1{background:#3B6491}
+      .tipo2{background:#5182B9}
+      .tipo3{background:#7457C0}
+
+      @media (max-width: 559px) {
+      .textos-esquerda{grid-column:1 / 2;grid-row:2 / 3}
+      .textos-direita{grid-column:1 / 2;grid-row:2 / 3}
+      .titulo{text-align:center}
+      .imagem-direita-container{grid-template-columns:1fr}
+      .imagem-direita-container amp-img{place-self:center;grid-column:1 / 2;grid-row:1 / 2}
+      .imagem-direita-container-com-legenda{grid-template-columns:1fr}
+      .box-imagem-com-legenda-container{grid-column:1 / 2;grid-row:1 / 2;place-self:center}
+      .bloco-imagem-esquerda{position:relative;display:grid;justify-content:stretch;padding:10px;margin:0 auto}
+      .imagem-esquerda-container{grid-template-columns:1fr}
+      .imagem-esquerda-container amp-img{place-self:center;grid-row:1 / 2}
+      .imagem-esquerda-container-com-legenda{grid-template-columns:1fr}
+      .box-imagem-esquerda-com-legenda-container{place-self:center;grid-row:1 / 2}
+      .galeria-basica-container-com-texto{grid-template-columns:1fr 1fr}
+      .galeria-basica-container-com-texto-down{grid-template-columns:1fr 1fr}
+      .galeria-basica-container-com-texto-direita{grid-template-columns:1fr}
+      .galeria-basica-blocos-com-texto-direita amp-img{margin-right:10px;width:30vw;height:30vw}
+      .galeria-basica-container-com-texto-direita-down{grid-template-columns:1fr}
+      .picstrip-esquerda{width:30vw;height:auto}
+      .galeria-basica-container-com-texto-esquerda{grid-template-columns:1fr}
+      .galeria-basica-blocos-com-texto-esquerda amp-img{margin-left:10px;width:30vw;height:30vw}
+      .galeria-basica-container-com-texto-esquerda-down{grid-template-columns:1fr}
+      .picstrip-direito{width:30vw;height:auto}
+      .galeria-basica-container-com-legenda{grid-template-columns:1fr 1fr}
+      }
+
+      .assinatura1-wrapper *{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif;font-size:14px;font-weight:400;color:#222225;fill:gray}
+      .nome-assinatura{font-weight:500}
+      .assinatura1-wrapper span{font-weight:300}
+      .assinatura1-wrapper{margin:10px}
+      .assinatura1-container{display:grid;grid-template-columns:275px 14px 205px;grid-gap:4px;padding:10px;margin:10px auto}
+      .assinatura1-logo{grid-column:1 / 2;grid-row:1 / -1}
+      .assinatura1-logo svg{width:97%}
+      .assinatura1-logo h3{margin-bottom:10px}
+      .divider-line{grid-column:2 / 3;grid-row:1 / -1}
+      .assinatura1-list-icons1-wrapper{grid-column:3 / 4}
+      .assinatura1-list-icons{display:flex;flex-direction:column;justify-content:space-between;align-items:stretch}
+      .assinatura1-list-line1{grid-row:1 / 2;display:flex;flex-direction:row;align-items:center}
+      .assinatura1-list-line2{grid-row:2 / 3;display:flex;flex-direction:row;align-items:center}
+      .assinatura1-list-line3{grid-row:3 / 4;display:flex;flex-direction:row;align-items:center}
+      .assinatura1-list-icons svg{width:27px;height:auto;margin:6px}
+      .assinatura2-wrapper *{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif;font-size:14px;font-weight:400;color:#222225;fill:gray}
+      .nome-assinatura{font-weight:500}
+      .assinatura2-wrapper span{font-weight:300}
+      .assinatura2-wrapper{display:flex;justify-content:center;margin:0 auto}
+      .assinatura2-container{display:grid;grid-template-columns:260px;grid-gap:4px;padding:10px;justify-items:center}
+      .assinatura2-logo{grid-column:1 / 2;grid-row:1 / 2}
+      .assinatura2-logo svg{width:97%}
+      .assinatura2-logo h3{text-align:center;margin:10px 0 0}
+      .assinatura2-logo p{text-align:center;margin:0 0 10px}
+      .assinatura2-list-icons1-wrapper{grid-column:1 / 2;grid-row:2 / 3}
+      .assinatura2-list-icons{display:flex;flex-direction:column;justify-content:space-between;align-items:stretch}
+      .assinatura2-list-line1{grid-row:1 / 2;display:flex;flex-direction:row;align-items:center}
+      .assinatura2-list-line2{grid-row:2 / 3;display:flex;flex-direction:row;align-items:center}
+      .assinatura2-list-line3{grid-row:3 / 4;display:flex;flex-direction:row;align-items:center}
+      .assinatura2-list-icons svg{width:27px;height:auto;margin:6px}
+
+      /*novo css imagens com contorno*/
+
+      .bloco-imagem-contorno-direita{position:relative;display:block;padding:10px;margin:0 auto}
+      .imagem-contorno-direita-container amp-img{width:150px;height: 250px;float:right;margin: 0 0 6px 10px;}
+      .textos-contorno-esquerda{text-align: justify;text-indent: 15px;}
+      .titulo-contorno{margin:10px;color:#1C334D;text-indent: 15px;}
+      .linha-fina-contorno{margin:10px;text-indent: 15px;}
+      .paragrafo-contorno{margin:10px;color:gray;text-indent: 20px;}
+
+      .bloco-imagem-contorno-esquerda{position:relative;display:block;padding:10px;margin:0 auto}
+      .imagem-contorno-esquerda-container amp-img{width:150px;height: 250px;float:left;margin: 0 10px 6px 0;}
+      .textos-contorno-direita{text-align: justify;text-indent: 15px;}
+      .titulo-contorno{margin:10px;color:#1C334D;text-indent: 15px;}
+      .linha-fina-contorno{margin:10px;text-indent: 15px;}
+      .paragrafo-contorno{margin:10px;color:gray;text-indent: 20px;}
+      /*novo css imagens com contorno*/
+      
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Article headline",
+      "image": [
+        "thumbnail1.jpg"
+      ],
+      "datePublished": "2015-02-05T08:00:00+08:00"
+    }
+    </script>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    <!-- Import amp-selector component in the header which we'll use to implement the tab switching. -->
+    <script async custom-element="amp-selector" src="https://cdn.ampproject.org/v0/amp-selector-0.1.js"></script>
+
+    <!-- Import amp-carousel component in the header which we'll use as a sample tab content -->
+    <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+
+    <!-- Import amp-bind component in the header which we'll use to switch tabs via buttons -->
+    <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+
+    <!-- Import the amp-youtube component -->
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+
+    <!-- Import the amp-social-share component in the header. -->
+    <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+
+    <!-- Import the amp-instagram component in the header -->
+    <script async custom-element="amp-instagram" src="https://cdn.ampproject.org/v0/amp-instagram-0.1.js"></script>
+
+    <!-- Include the amp-date-countdown component ... -->
+    <script async custom-element="amp-date-countdown" src="https://cdn.ampproject.org/v0/amp-date-countdown-0.1.js"></script>
+
+    <!-- ... and the amp-mustache component in the header FOR COUNTDOWN -->
+    <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+
+    <!-- Import the animation component in the header. -->
+    <script async custom-element="amp-anim" src="https://cdn.ampproject.org/v0/amp-anim-0.1.js"></script>
+
+    <!-- Import the amp-audio component. -->
+    <script async custom-element="amp-audio" src="https://cdn.ampproject.org/v0/amp-audio-0.1.js"></script>
+
+    <!-- Ensure you've configured your canonical URL. -->
+    <!-- <link rel="canonical" href="https://ampbyexample.com/components/amp-social-share/"> -->
+  </head>
+  <body>
+
+
+    <!-- bloco imagem contorno direita -->
+    <section class="bloco-imagem-contorno-direita">
+  		<div class="imagem-contorno-direita-container blocks">
+			<amp-img class="bordas" src="img/150x250.jpg"
+				width="150"
+				height="250"
+				layout="responsive"
+				alt="bloco-imagem-contorno-direita">
+			</amp-img>
+                   <div class="textos-contorno-esquerda">
+                        <h1 class="titulo-contorno">TÍTULO TAMANHO 18px</h1>
+                        <h4 class="linha-fina-contorno">LINHA FINA TAMANHO 14px, consectetur adipisicing elit. Consequuntur in, maxime veniam repellendus alias beatae eligendi dolores.</h4>
+                        <p class="paragrafo-contorno">TAMANHO 14px, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione perspiciatis deleniti nobis nulla animi numquam voluptatem totam, architecto unde vel eligendi nesciunt sequi veniam beatae quae a ad voluptatum ex? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati minus, consequatur ex eius quis, laboriosam, consectetur veniam culpa quisquam deserunt, omnis accusantium? Rem consequuntur cumque doloremque sapiente, vitae, accusantium et. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi error odio voluptatem vitae molestiae, voluptates nam quia culpa tempore sapiente, quam temporibus impedit deleniti similique. Reiciendis nemo quas voluptas neque. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid suscipit odit vitae veniam dolorem repellat, cum mollitia! Dolor autem, veniam sit ad tenetur. Modi exercitationem dolore ex. Tenetur harum, molestiae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, quo dicta vitae praesentium distinctio placeat quibusdam officiis aspernatur eos possimus rerum magni dolorum quis accusantium itaque temporibus illo asperiores ipsa. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga odit eaque consectetur accusantium explicabo aut hic laborum officia vel earum enim, pariatur, animi laudantium nostrum eos esse dicta minus eveniet.</p>
+                  </div>
+  		</div>
+  	</section>
+
+    <!-- bloco imagem contorno equerda -->
+    <section class="bloco-imagem-contorno-esquerda">
+            <div class="imagem-contorno-esquerda-container blocks">
+                  <amp-img class="bordas" src="img/150x250.jpg"
+                        width="150"
+                        height="250"
+                        layout="responsive"
+                        alt="bloco-imagem-contorno-esquerda">
+                  </amp-img>
+                   <div class="textos-contorno-direita">
+                        <h1 class="titulo-contorno">TÍTULO TAMANHO 18px</h1>
+                        <h4 class="linha-fina-contorno">LINHA FINA TAMANHO 14px, consectetur adipisicing elit. Consequuntur in, maxime veniam repellendus alias beatae eligendi dolores.</h4>
+                        <p class="paragrafo-contorno">TAMANHO 14px, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione perspiciatis deleniti nobis nulla animi numquam voluptatem totam, architecto unde vel eligendi nesciunt sequi veniam beatae quae a ad voluptatum ex? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati minus, consequatur ex eius quis, laboriosam, consectetur veniam culpa quisquam deserunt, omnis accusantium? Rem consequuntur cumque doloremque sapiente, vitae, accusantium et. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi error odio voluptatem vitae molestiae, voluptates nam quia culpa tempore sapiente, quam temporibus impedit deleniti similique. Reiciendis nemo quas voluptas neque. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid suscipit odit vitae veniam dolorem repellat, cum mollitia! Dolor autem, veniam sit ad tenetur. Modi exercitationem dolore ex. Tenetur harum, molestiae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, quo dicta vitae praesentium distinctio placeat quibusdam officiis aspernatur eos possimus rerum magni dolorum quis accusantium itaque temporibus illo asperiores ipsa. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga odit eaque consectetur accusantium explicabo aut hic laborum officia vel earum enim, pariatur, animi laudantium nostrum eos esse dicta minus eveniet.</p>
+                  </div>
+            </div>
+      </section>
+
+  </body>
+</html>
